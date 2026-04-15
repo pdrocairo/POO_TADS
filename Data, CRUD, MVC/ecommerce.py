@@ -41,10 +41,10 @@ class UI:
     @staticmethod
     def menu():
         print("Escolha uma opçao: \n")
-        print("1 - Criar Usuário")
-        print("2 - Deletar Usuário")
-        print("3 - Atualizar usuário")
-        print("4 - Listar Usuários")
+        print("1 - Criar Cliente")
+        print("2 - Deletar Cliente")
+        print("3 - Atualizar Cliente")
+        print("4 - Listar Clientes")
         print("5 - Sair")
         return input("Digite o número da opçao: ")
     
@@ -96,10 +96,10 @@ class UI:
     
     
     def criar_cliente(self):
-        nome = input("\nDigite o nome do cliente: ")
-        telefone = input("Digite o telefone do cliente: ")
-        email = input("Digite o email do cliente: ")
-        ident = input("Digite o id do cliente: ")
+        nome = input("\nDigite o nome do Cliente: ")
+        telefone = input("Digite o telefone do Cliente: ")
+        email = input("Digite o email do Cliente: ")
+        ident = input("Digite o id do Cliente: ")
         return Cliente(nome, telefone, email, ident)
         
 
@@ -114,7 +114,7 @@ class UI:
                 print("----------------------------------------------------------------------------------\n")
         else:
             print("\n----------------------------------------")
-            print("\nNENHUM USUÁRIO CADASTRADO\n")
+            print("\nNENHUM CLIENTE CADASTRADO\n")
             print("----------------------------------------\n")
 
 
@@ -126,7 +126,7 @@ class UI:
                     self.lista_clientes.remove(cliente)
         else:
             print("\n----------------------------------------")
-            print("\nNENHUM USUÁRIO CADASTRADO\n")
+            print("\nNENHUM CLIENTE CADASTRADO\n")
             print("----------------------------------------\n")
 
     def atualizar_cliente(self):
@@ -154,12 +154,12 @@ class UI:
 
             if not cliente_encontrado:
                 print("\n----------------------------------------")
-                print("\nNENHUM USUÁRIO ENCONTRADO\n")
+                print("\nNENHUM CLIENTE ENCONTRADO\n")
                 print("----------------------------------------\n")
                     
         else:
             print("\n----------------------------------------")
-            print("\nNENHUM USUÁRIO CADASTRADO\n")
+            print("\nNENHUM CLIENTE CADASTRADO\n")
             print("----------------------------------------\n")
 
     

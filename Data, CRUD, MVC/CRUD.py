@@ -12,16 +12,9 @@ class Cliente:
 class ClienteDAO:
     def __init__(self):
         self.objetos = []
-    def inserir(self, obj):
-        self.abrir()
-        self.objetos.append(obj)
-        self.salvar()
-    def listar(self):
-        self.abrir()
-        return self.objetos
     def salvar(self):
         with open("clientes.json", mode="w") as arquivo:
-            json.dump(self.objetos, arquivo, default = vars)                 
+            json.dump(self.objetos, arquivo, default = vars)
     def abrir(self):
         self.objetos = []
         try:
@@ -31,7 +24,15 @@ class ClienteDAO:
                     c = Cliente(obj["id"], obj["nome"])
                     self.objetos.append(c)        
         except FileNotFoundError:
-            self.objetos = []
+            self.objetos = []                      
+    def inserir(self, obj):
+        self.abrir()
+        self.objetos.append(obj)
+        self.salvar()
+    def listar(self):
+        self.abrir()
+        return self.objetos
+
             
 class UI:
     @staticmethod
