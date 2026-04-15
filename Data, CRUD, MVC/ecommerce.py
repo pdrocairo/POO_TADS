@@ -36,6 +36,7 @@ class Cliente:
 class UI:
     def __init__(self):
         self.lista_clientes = []
+        self.carregar_do_txt()
 
     @staticmethod
     def menu():
@@ -175,18 +176,41 @@ class UI:
                 cliente = self.criar_cliente()
                 self.clear()
                 self.salvar_cliente(cliente)
+                self.salvar_em_arquivo()
                 self.clear()
             if valor == 2:
                 self.clear()
                 self.apagar_cliente()
+                self.salvar_em_arquivo()
                 self.clear()
             if valor == 3:
                 self.atualizar_cliente()
+                self.salvar_em_arquivo()
             if valor == 4:
                 self.clear()
                 self.mostrar_clientes()
             if valor == 5:
                 break
+    
+    def salvar_em_arquivo(self):
+        with open("clientes.txt", "w", encoding="utf-8") as arquivo:
+            for cliente in self.lista_clientes:
+                objetos = f"{cliente.get_ident()};{cliente.get_nome()};{cliente.get_telefone()};{cliente.get_email()}\n"
+                arquivo.write(objetos)
+
+    def carregar_do_txt(self):
+        if os.path.exists("clientes.txt"):
+
+            with open("clientes.txt", "r", encoding="utf-8") as arquivo:
+                objetos = arquivo.readlines()
+                for item in objetos:
+                    dados = item.strip().split(";")
+
+                    if len(dados) == 4:
+                        ident, nome, telefone, email = dados
+
+                        cliente = Cliente(nome, telefone, email, ident)
+                        self.lista_clientes.append(cliente)
     
             
 
